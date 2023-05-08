@@ -1,0 +1,37 @@
+.window {
+  width: 400px;
+  height: 200px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+  font-family: sans-serif;
+
+  touch-action: none;
+
+  /* This makes things *much* easier */
+  box-sizing: border-box;
+  position: absolute;
+}
+
+.top-bar {
+  outline: 5px solid black;
+  width: 100px;
+  height: 10px;
+  position: absolute;
+  z-index: -1;
+  transform: translateY(-30px);
+  background-color: black;
+  justify-content: flex-end;
+  display: flex;
+}
+
+.top-icon {
+  fill: white;
+  width: 15px;
+  padding: 0px 5px;
+  padding-top: 7px;
+  height: 15px;
+}

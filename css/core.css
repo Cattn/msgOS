@@ -1,0 +1,13 @@
+html {
+    background-image: url(../assets/defaultOS_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 300vh;
+    width: 300vw;
+}
