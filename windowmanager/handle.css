@@ -1,0 +1,63 @@
+.handle {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-color: transparent;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+  }
+  
+  #handle-tl {
+    top: -15px;
+    left: 15px;
+    cursor: nwse-resize;
+  }
+  
+  #handle-tr {
+    top: -15px;
+    right: 15px;
+    cursor: nesw-resize;
+  }
+  
+  #handle-bl {
+    bottom: 15px;
+    left: 15px;
+    cursor: nesw-resize;
+  }
+  
+  #handle-br {
+    bottom: 15px;
+    right: 15px;
+    cursor: nwse-resize;
+  }
+
+  #handle-b {
+    bottom: 15px;
+    width: 90%;
+    left: 5%;
+    cursor: n-resize;
+  }
+
+  #handle-t {
+    top: -15px;
+    width: 90%;
+    left: 5%;
+    cursor: n-resize;
+  }
+
+  #handle-r {
+    right: 15px;
+    height: 90%;
+    bottom: 35px;
+    cursor: w-resize;
+  }
+
+  #handle-l {
+    left: 15px;
+    height: 90%;
+    bottom: 35px;
+    cursor: w-resize;
+  }

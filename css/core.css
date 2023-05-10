@@ -11,3 +11,15 @@ body {
     height: 300vh;
     width: 300vw;
 }
+
+:root {
+    --primary-color: rgb(147, 77, 246);
+}
+
+iframe {
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}

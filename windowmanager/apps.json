@@ -2,15 +2,39 @@
   "apps": [
     {
       "name": "MLib",
-      "url": "https://cattn.github.io/MLib/"
+      "id": "MLib",
+      "url": "https://cattn.github.io/MLib/",
+      "icon": "assets/spotify.png",
+      "width": "1200px",
+      "height": "600px",
+      "startup": "true"
     },
     {
-      "name": "UMLA",
-      "url": "https://bing.com"
+      "name": "gba",
+      "id": "gba",
+      "url": "https://cattn.github.io/GBA2.0/",
+      "icon": "assets/GBA_2_Icon_ver3.png",
+      "width": "1200px",
+      "height": "600px",
+      "startup": "true"
     },
     {
-      "name": "Discord",
-      "url": "https://bing.com"
+      "name": "Bing",
+      "id": "Bing",
+      "url": "https://bing.com",
+      "icon": "assets/desktoplogo.png",
+      "width": "800px",
+      "height": "600px",
+      "startup": "true"
+    },
+    {
+      "name": "Bing2",
+      "id": "Bing2",
+      "url": "https://bing.com",
+      "icon": "assets/desktoplogo.png",
+      "width": "800px",
+      "height": "600px",
+      "startup": "false"
     }
   ]
 }

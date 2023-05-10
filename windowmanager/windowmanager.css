@@ -14,18 +14,31 @@
   /* This makes things *much* easier */
   box-sizing: border-box;
   position: absolute;
+  transition:visibility 0.3s linear,opacity 0.3s linear;
+  visibility: visible;
+  opacity: 1;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 }
 
 .top-bar {
-  outline: 5px solid black;
+  outline: 5px solid var(--primary-color);
   width: 100px;
   height: 10px;
   position: absolute;
   z-index: -1;
   transform: translateY(-30px);
-  background-color: black;
+  background-color: var(--primary-color);
   justify-content: flex-end;
   display: flex;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 }
 
 .top-icon {
@@ -34,4 +47,9 @@
   padding: 0px 5px;
   padding-top: 7px;
   height: 15px;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 }

@@ -1,0 +1,107 @@
+.taskbar-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    z-index: 999;
+    width: 100vw;
+    height: 6vh;
+    display: flex;
+    justify-content: flex-start;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+.taskbar-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    z-index: 999;
+    width: 100vw;
+    height: 6vh;
+    display: flex;
+    justify-content: flex-start;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+.taskbar-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 5vw;
+    background-color: var(--primary-color);
+    color: #fff;
+    z-index: 999;
+    height: 100%;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+.taskbar-right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 5vw;
+    background-color: var(--primary-color);
+    color: #fff;
+    z-index: 999;
+    height: 100%;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.taskbar-icon {
+    background-color: transparent;
+    margin-left: 0.5vw;
+    width: 4vw;
+    height: auto;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+.taskbar-icon:hover {
+    
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10%;
+}
+
+.taskbar-image {
+    width: 100%;
+    height: 100%;
+    line-height: 50%;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+.active {
+    border-top: 3px solid red;
+}
