@@ -28,6 +28,7 @@ function registerTaskBarSpace(app) {
             registerTaskBarSpace(app);
             return;
         }
+        if (window.style.zIndex == "1") {
         if (window.style.visibility == "visible") {
             window.style.visibility = "hidden";
             window.style.opacity = "0";
@@ -36,6 +37,16 @@ function registerTaskBarSpace(app) {
         window.style.visibility = "visible";
         window.style.opacity = "1";
         taskbarIcon.style.borderTop = "2px solid #fff"
+        }
+    } else {
+        let windows = document.querySelectorAll('.window');
+        windows.forEach((window) => {
+            window.style.zIndex = 0;
+        });
+          window.style.zIndex = 1;
+          window.style.visibility = "visible";
+          window.style.opacity = "1";
+          taskbarIcon.style.borderTop = "2px solid #fff"
         }
     });
 }
