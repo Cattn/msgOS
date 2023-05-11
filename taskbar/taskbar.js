@@ -2,7 +2,6 @@ let taskbar = document.createElement('div');
 taskbar.setAttribute('id', 'taskbar');
 taskbar.setAttribute('position', 'bottom');
 taskbar.setAttribute('class', 'taskbar-bottom');
-taskbar.style.height = "6vh";
 
 let systemTaskbarIcon = document.createElement('div');
 systemTaskbarIcon.setAttribute('id', 'system-icon');
@@ -254,3 +253,28 @@ function updateTime() {
 }
 
 setInterval(updateTime, 1000);
+
+
+function changeTaskBarLocation() {
+    let taskbar = document.getElementById('taskbar');
+    let time = document.getElementById('time');
+    let taskbarLocation = localStorage.getItem('taskbarPosition') || "bottom";
+    if (taskbarLocation == "top") {
+        taskbar.classList = "";
+        taskbar.classList.add('taskbar-top');
+    }
+    if (taskbarLocation == "bottom") {
+        taskbar.classList = "";
+        taskbar.classList.add('taskbar-bottom');
+    }
+    if (taskbarLocation == "left") {
+        taskbar.classList = "";
+        taskbar.classList.add('taskbar-left');
+        time.style.top = "94%";
+    }
+    if (taskbarLocation == "right") {
+        taskbar.classList = "";
+        taskbar.classList.add('taskbar-right');
+        time.style.top = "94%";
+    }
+}

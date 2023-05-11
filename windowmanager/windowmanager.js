@@ -127,6 +127,54 @@ window.addEventListener('message', function (e) {
     closeButtonElement.onclick = function() {
       appWindow.remove();
       unregisterTaskBarSpace(app);
+      updateWindowState();
     } 
   }
 
+  /*
+  window.onbeforeunload = function () {
+    updateWindowState();
+    return "Are you sure you want to close?";
+  };  
+  */
+
+  function updateWindowState() {
+    let doWindowState = localStorage.getItem('windowState');
+    if (doWindowState == "true") {
+      saveWindowState();
+    } else {
+      return;
+    }
+  }
+
+  function saveWindowState() {
+    let windows = document.querySelectorAll('.window');
+    let windowStates = [];
+    for (let i = 0; i < windows.length; i++) {
+      let window = windows[i];
+      let state = {
+        id: window.id,
+        top: window.style.top,
+        left: window.style.left,
+        width: window.style.width,
+        height: window.style.height,
+        visible: window.style.visibility
+      }
+      windowStates.push(state);
+      localStorage.setItem('windowStates', JSON.stringify(windowStates));
+    }
+  }
+
+  function loadWindowState() {
+    let doWindowState = localStorage.getItem('windowState');
+    if (doWindowState == "true") {
+      let windowStates = localStorage.getItem('windowStates');
+      windowStates = JSON.parse(windowStates);
+      for (let i = 0; i < windowStates.length; i++) {
+        let windowState = windowStates[i];
+        openApp(windowState.id);
+      }
+    } else {
+      return;
+    }
+  }

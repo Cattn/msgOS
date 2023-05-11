@@ -188,3 +188,4 @@ function snapZoneTrigger(snap, app) {
     rightTriggerZone.style.display = 'none';
   }
 }
+

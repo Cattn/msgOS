@@ -8,15 +8,21 @@ async function GetAllApps() {
         allApps.push(apps[i]);
         const name = apps[i].name;
     }
+    let doWindowState = localStorage.getItem('windowState');
+    if (doWindowState == "true") {
+        loadWindowState();
+    } else {
     allApps.forEach(app => {
         if (app.startup == "true") {
         createWindow(app);
         registerTaskBarSpace(app);
         }
     });
+}
     registerWindows();
     windowLayerManager();
     createStartMenu();
+    changeTaskBarLocation();
   }
   GetAllApps();
 
