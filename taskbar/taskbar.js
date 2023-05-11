@@ -13,6 +13,28 @@ let systemTaskbarIconImage = document.createElement('img');
 systemTaskbarIconImage.setAttribute('src', 'assets/os_icon.png');
 systemTaskbarIconImage.setAttribute('class', 'os-image');
 
+document.body.addEventListener('keydown', (event) => {
+    if (event.key == "Alt") {
+        event.preventDefault();
+        let element = document.getElementById('start-menu');
+    if (element.style.visibility == "visible") {
+        element.classList.add('close'); // start animation
+        setTimeout(function () {
+                element.style.visibility = "hidden";
+                element.style.opacity = "0";
+        }, 400);
+    } else {
+    element.classList.remove('close');
+    element.classList.remove('start-menu'); // reset animation
+    void element.offsetWidth; // trigger reflow
+    element.classList.add('start-menu'); // start animation
+    element.style.visibility = "visible";
+    element.style.opacity = "1";
+    }
+}
+
+});
+
 systemTaskbarIcon.addEventListener('click', () => {
     let element = document.getElementById('start-menu');
     if (element.style.visibility == "visible") {
@@ -110,6 +132,50 @@ function createStartMenu() {
 
     document.body.appendChild(start);
 
+    let input = document.getElementById('start-menu-search');
+    input.addEventListener('keyup', () => {
+        let query = input.value.toLowerCase();
+        let pi = document.querySelectorAll('.pinned-app');
+        pi.forEach((pin) => {
+            if (pin.id.toLowerCase().includes(query)) {
+                pin.style.display = "block";
+            } else {
+                pin.style.display = "none";
+            }
+        });
+    });
+
+    // Listen for enter key, and if so open the app
+    input.addEventListener('keydown', (e) => {
+        if (e.keyCode == 13) {
+            let query = input.value.toLowerCase();
+            
+            let pi = document.querySelectorAll('.pinned-app');
+            let count = 0;
+            pi.forEach((pin) => {
+                if (pin.id.toLowerCase().includes(query)) {
+                    count++;
+                }
+            });
+            if (count == 1) {
+            pi.forEach((pin) => {
+                if (pin.id.toLowerCase().includes(query)) {
+                    let id = pin.id.split('-')[0];
+                    let appWindow = document.getElementById(id);
+                    if (appWindow == undefined) {
+                        openApp(id);
+                        return;
+                    } else {
+                        appWindow.style.visibility = "visible";
+                        appWindow.style.opacity = "1";
+                    }
+                }
+            });
+        } else {
+            return;
+        }
+        }
+    });
     let pinsDiv = document.getElementById('pins-start');
     let pins = [
         {
@@ -141,10 +207,7 @@ function createStartMenu() {
             let window = document.getElementById(pin.id);
             console.log(window);
             if (window == undefined) {
-                let app = getApp(pin.id);
-                console.log(app);
-                registerTaskBarSpace(app);
-                createWindow(app);
+                openApp(pin.id);
                 return;
             }
             if (window.style.zIndex == "1") {

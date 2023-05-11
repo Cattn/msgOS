@@ -7,7 +7,7 @@
       "icon": "assets/spotify.png",
       "width": "1200px",
       "height": "600px",
-      "startup": "true"
+      "startup": "false"
     },
     {
       "name": "gba",
@@ -25,7 +25,7 @@
       "icon": "assets/chrome.ico",
       "width": "800px",
       "height": "600px",
-      "startup": "true"
+      "startup": "false"
     },
     {
       "name": "Discord",
@@ -33,6 +33,15 @@
       "url": "https://discord.com/app",
       "icon": "assets/discord.ico",
       "width": "800px",
+      "height": "600px",
+      "startup": "false"
+    },
+    {
+      "name": "Settings App",
+      "id": "settings",
+      "url": "settings/index.html",
+      "icon": "assets/settings.ico",
+      "width": "1000px",
       "height": "600px",
       "startup": "true"
     },

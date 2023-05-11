@@ -3,7 +3,6 @@ window.scrollTo(0,0);
 
 
   function createWindow(app) {
-    if (app.startup == "true") {
     let appWindow = document.createElement('div');
     appWindow.classList.add('window');
     appWindow.setAttribute('id', app.id);
@@ -108,7 +107,6 @@ window.scrollTo(0,0);
     closeButtonElement.onclick = function() {
       appWindow.remove();
       unregisterTaskBarSpace(app);
-    }
-  } 
+    } 
   }
 
