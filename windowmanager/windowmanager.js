@@ -1,5 +1,25 @@
 window.scrollTo(0,0);
 
+// Get the primary color from local storage
+const primaryColor = localStorage.getItem('primaryColor');
+if (primaryColor) {
+  document.documentElement.style.setProperty('--primary-color', primaryColor);
+}
+
+window.addEventListener('message', function (e) {
+  const data = JSON.parse(e.data);
+
+  const channel = data.channel;
+  const action = data.action;
+
+  if (channel == 'settings') {
+    if (action == 'changeColor') {
+      const color = data.color;
+      document.documentElement.style.setProperty('--primary-color', color);
+      this.localStorage.setItem('primaryColor', color);
+    }
+  }
+});
 
 
   function createWindow(app) {
