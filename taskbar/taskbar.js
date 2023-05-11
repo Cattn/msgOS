@@ -192,6 +192,16 @@ function createStartMenu() {
             name: "Bing",
             icon: "assets/chrome.ico",
             id: "Bing"
+        },
+        {
+            name: "Discord",
+            icon: "assets/discord.ico",
+            id: "Discord"
+        },
+        {
+            name: "Settings App",
+            icon: "assets/settings.ico",
+            id: "settings"
         }
     ]
     pins.forEach((pin) => {
