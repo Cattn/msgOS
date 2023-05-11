@@ -14,5 +14,18 @@ async function GetAllApps() {
     });
     registerWindows();
     windowLayerManager();
+    createStartMenu();
   }
   GetAllApps();
+
+async function getApp(appId) {
+    const response = await fetch('windowmanager/apps.json');
+    const json = await response.json();
+    
+    const apps = json.apps;
+    for (let i = 0; i < apps.length; i++) {
+        if (apps[i].id == appId) {
+            return apps[i];
+        }
+    }
+}

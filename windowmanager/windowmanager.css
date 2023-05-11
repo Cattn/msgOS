@@ -30,6 +30,7 @@
   height: 10px;
   position: absolute;
   z-index: -1;
+  border-radius: 10px;
   transform: translateY(-30px);
   background-color: var(--primary-color);
   justify-content: flex-end;

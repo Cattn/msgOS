@@ -13,7 +13,7 @@ body {
 }
 
 :root {
-    --primary-color: rgb(147, 77, 246);
+    --primary-color: rgb(77, 80, 246);
 }
 
 iframe {
@@ -22,4 +22,9 @@ iframe {
     -khtml-user-select: none;
     -webkit-user-select: none;
     -o-user-select: none;
+    border-radius: 10px;
+}
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

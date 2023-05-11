@@ -22,7 +22,16 @@
       "name": "Bing",
       "id": "Bing",
       "url": "https://bing.com",
-      "icon": "assets/desktoplogo.png",
+      "icon": "assets/chrome.ico",
+      "width": "800px",
+      "height": "600px",
+      "startup": "true"
+    },
+    {
+      "name": "Discord",
+      "id": "Discord",
+      "url": "https://discord.com/app",
+      "icon": "assets/discord.ico",
       "width": "800px",
       "height": "600px",
       "startup": "true"
@@ -31,7 +40,7 @@
       "name": "Bing2",
       "id": "Bing2",
       "url": "https://bing.com",
-      "icon": "assets/desktoplogo.png",
+      "icon": "assets/chrome.ico",
       "width": "800px",
       "height": "600px",
       "startup": "false"

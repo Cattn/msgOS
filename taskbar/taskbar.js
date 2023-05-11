@@ -4,6 +4,43 @@ taskbar.setAttribute('position', 'bottom');
 taskbar.setAttribute('class', 'taskbar-bottom');
 taskbar.style.height = "6vh";
 
+let systemTaskbarIcon = document.createElement('div');
+systemTaskbarIcon.setAttribute('id', 'system-icon');
+systemTaskbarIcon.setAttribute('class', 'taskbar-icon');
+systemTaskbarIcon.setAttribute('title', 'Start');
+
+let systemTaskbarIconImage = document.createElement('img');
+systemTaskbarIconImage.setAttribute('src', 'assets/os_icon.png');
+systemTaskbarIconImage.setAttribute('class', 'os-image');
+
+systemTaskbarIcon.addEventListener('click', () => {
+    let element = document.getElementById('start-menu');
+    if (element.style.visibility == "visible") {
+        element.classList.add('close'); // start animation
+        setTimeout(function () {
+                element.style.visibility = "hidden";
+                element.style.opacity = "0";
+        }, 400);
+    } else {
+    element.classList.remove('close');
+    element.classList.remove('start-menu'); // reset animation
+    void element.offsetWidth; // trigger reflow
+    element.classList.add('start-menu'); // start animation
+    element.style.visibility = "visible";
+    element.style.opacity = "1";
+    }
+});
+
+systemTaskbarIcon.appendChild(systemTaskbarIconImage);
+taskbar.appendChild(systemTaskbarIcon);
+
+let time = document.createElement('div');
+time.setAttribute('id', 'time');
+time.setAttribute('class', 'taskbar-time');
+time.innerHTML = "00:00";
+
+taskbar.appendChild(time);
+
 document.body.appendChild(taskbar);
 // Default taskbar size: 6vh, small: 4vh, large: 8vh
 // When taskbar is resized, consider: 1. taskbar size, 2. icon size, 3. icon spacing
@@ -59,3 +96,87 @@ function unregisterTaskBarSpace(app) {
     let taskbarIcon = document.getElementById(app.id + '-icon');
     taskbarIcon.remove();
 }
+
+
+function createStartMenu() {
+    let start = document.createElement('div');
+    start.innerHTML = `
+    <input type="text" id="start-menu-search" class="start-menu-search" placeholder="Search" />
+      <h3 class="pinned-text">Pinned</h3>
+      <div id="pins-start" class="pinned-start"></div>
+      `;
+    start.setAttribute('id', 'start-menu');
+    start.setAttribute('class', 'start-menu');
+
+    document.body.appendChild(start);
+
+    let pinsDiv = document.getElementById('pins-start');
+    let pins = [
+        {
+            name: "MLib",
+            icon: "assets/spotify.png",
+            id: "MLib"
+        },
+        {
+            name: "gba",
+            icon: "assets/GBA_2_Icon_ver3.png",
+            id: "gba"
+        },
+        {
+            name: "Bing",
+            icon: "assets/chrome.ico",
+            id: "Bing"
+        }
+    ]
+    pins.forEach((pin) => {
+        pinsDiv.innerHTML += `
+        <div id="${pin.id}-pin" class="pinned-app">
+          <img src="${pin.icon}" class="pinned-app-icon" />
+          <p class="pinned-app-name">${pin.name}</p>
+        </div>
+        `;
+
+        let pinElement = document.getElementById(pin.id + '-pin');
+        pinElement.addEventListener('click', () => {
+            let window = document.getElementById(pin.id);
+            console.log(window);
+            if (window == undefined) {
+                let app = getApp(pin.id);
+                console.log(app);
+                registerTaskBarSpace(app);
+                createWindow(app);
+                return;
+            }
+            if (window.style.zIndex == "1") {
+            if (window.style.visibility == "visible") {
+                window.style.visibility = "hidden";
+                window.style.opacity = "0";
+            } else {
+            window.style.visibility = "visible";
+            window.style.opacity = "1";
+            }
+        } else {
+            let windows = document.querySelectorAll('.window');
+            windows.forEach((window) => {
+                window.style.zIndex = 0;
+            });
+              window.style.zIndex = 1;
+              window.style.visibility = "visible";
+              window.style.opacity = "1";
+            }
+        });
+    });
+}
+
+function updateTime() {
+    let date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    let time = document.getElementById('time');
+    time.innerHTML = hours + ":" + minutes;
+}
+
+setInterval(updateTime, 1000);

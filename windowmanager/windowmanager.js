@@ -1,4 +1,4 @@
-
+window.scrollTo(0,0);
 
 
 
@@ -58,12 +58,51 @@
       appWindow.style.visibility = "hidden";
     }
     changeButtonElement.onclick = function() {
-      if (appWindow.style.width == "100%") {
+      var style = document.createElement('style');
+      let top = appWindow.style.top;
+      let left = appWindow.style.left;
+      let width = appWindow.style.width;
+      let height = appWindow.style.height;
+      style.type = 'text/css';
+      style.innerHTML = `
+      @keyframes ${app.id}-up {
+        from {
+          top: ${top};
+          left: ${left};
+          width: ${width};
+          height: ${height};
+        }
+        to {
+          top: 0px;
+          left: -10px;
+          width: 100%;
+          height: 95%;
+        }
+      }
+      `;
+      document.getElementsByTagName('head')[0].appendChild(style);
+      if (appWindow.style.width >= "95%") {
         appWindow.style.width = app.width;
         appWindow.style.height = app.height;
+        appFrame.style.width = app.width;
+        appFrame.style.height = app.height;
+        topBar.style.width = app.width;
+        topBar.style.height = app.height;
       } else {
-        appWindow.style.width = "1000px";
-        appWindow.style.height = "1000px";
+        appWindow.style["animation"] = `${app.id}-up 0.15s ease-in-out forwards`;
+        appWindow.style.top = "0px";
+        appWindow.style.left = "-10px";
+        appWindow.style.width = "100%";
+        appWindow.style.height = "95%";
+        appFrame.style.width = "100%";
+        appFrame.style.height = "100%";
+        appFrame.style.left = "-10px";
+        appFrame.style.top = "0px";
+        topBar.style.width = "100%";
+        topBar.style.height = "101%";
+        appWindow.addEventListener('animationend', () => {
+          style.remove();
+        });
       }
     }
     closeButtonElement.onclick = function() {
@@ -72,3 +111,4 @@
     }
   } 
   }
+
