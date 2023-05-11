@@ -250,6 +250,7 @@ function updateTime() {
     }
     let time = document.getElementById('time');
     time.innerHTML = hours + ":" + minutes;
+    window.scrollTo(0,0);
 }
 
 setInterval(updateTime, 1000);
