@@ -176,33 +176,7 @@ function createStartMenu() {
         }
     });
     let pinsDiv = document.getElementById('pins-start');
-    let pins = [
-        {
-            name: "MLib",
-            icon: "assets/spotify.png",
-            id: "MLib"
-        },
-        {
-            name: "gba",
-            icon: "assets/GBA_2_Icon_ver3.png",
-            id: "gba"
-        },
-        {
-            name: "Bing",
-            icon: "assets/chrome.ico",
-            id: "Bing"
-        },
-        {
-            name: "Discord",
-            icon: "assets/discord.ico",
-            id: "Discord"
-        },
-        {
-            name: "Settings App",
-            icon: "assets/settings.ico",
-            id: "settings"
-        }
-    ]
+    let pins = allApps;
     pins.forEach((pin) => {
         pinsDiv.innerHTML += `
         <div id="${pin.id}-pin" class="pinned-app">
